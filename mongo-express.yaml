@@ -46,7 +46,9 @@ metadata:
 spec:
   selector:
     app: mongo-express
+  type: LoadBalancer
   ports:
     - port: 8081
       protocol: TCP
-  type: NodePort
+      targetPort: 8081
+      nodePort: 30000
