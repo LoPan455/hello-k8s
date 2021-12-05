@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: mongo
+        image: mongo:4.4.10
         resources:
           limits:
             memory: "128Mi"
@@ -25,8 +25,12 @@ spec:
         - containerPort: 27017
         env:
           - name: MONGO_INITDB_ROOT_USERNAME
-            value:
+            valueFrom:
+              secretKeyRef:
+                name:  mongodb-secret
+                key: mongo-root-username
           - name: MONGO_INITDB_ROOT_PASSWORD
-            value:
-
-
+            valueFrom:
+              secretKeyRef:
+                name:  mongo-secret
+                key: mongo-root-password
