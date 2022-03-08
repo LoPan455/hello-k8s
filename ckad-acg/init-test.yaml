@@ -6,7 +6,7 @@ spec:
   containers:
     - name: nginx
       image: nginx:stable
-   initContainers:
-     - name: busybox
-       image: busybox:stable
-       command: ['sh', '-c', 'sleep 30']
+ initContainers:
+   - name: busybox
+     image: busybox:stable
+     command: ['sh', '-c', 'sleep 30']
