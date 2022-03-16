@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-deployment
+  labels:
+    app: petclinic
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: petclinic
+  template:
+    metadata:
+      labels:
+        app: petclinic
+    spec:
+      containers:
+        - name: config-server
+          image: tjohander/spring-petclinic-config-server:latest
+          ports:
+            - containerPort: 80
+        - name: admin-server
+          image: tjohander/spring-petclinic-admin-server:latest
+          ports:
+            - containerPort: 80
+        - name: disovery-server
+          image: tjohander/spring-petclinic-discovery-server:latest
+          ports:
+            - containerPort: 80
